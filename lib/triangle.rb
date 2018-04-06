@@ -13,21 +13,27 @@ class Triangle
     @side1 > 0 && @side2 > 0 && @side3 > 0 
   end 
   
-  def triangle_valid?
+  def sides_valid?
    @side1 + @side2 > @side3 && @side1 + @side3 > @side2 && @side2 + @side3 > @side1
   end
+  
+  def triangle_valid?
+    self.sides_positive? && self.sides_valid?
+  end 
     
   
   def kind
-    
-    
-    if @side1 == @side2 == @side3 
+    if triangle_valid?
+        if @side1 == @side2 == @side3 
       :equilateral 
-    elsif @side1 == @side || @side1 == @side3 || @side2 == @side3
+     elsif @side1 == @side || @side1 == @side3 || @side2 == @side3
       :isoceles
-    else
+     else
       :scalene
       end 
+    else 
+      raise TriangleError
+    end 
   end 
   
   
