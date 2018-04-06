@@ -19,6 +19,10 @@ class Triangle
     
   
   def kind
+    if triangle_valid? && sides_positive?
+      "valid type"
+    else
+      raise TriangleError
   end 
   
   
