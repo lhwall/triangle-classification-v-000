@@ -23,6 +23,7 @@ class Triangle
       "valid type"
     else
       raise TriangleError
+    end 
   end 
   
   
